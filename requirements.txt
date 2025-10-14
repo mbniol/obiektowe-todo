@@ -1,0 +1,2 @@
+sqlalchemy==2.0.44
+sqlalchemy.orm==1.2.10
