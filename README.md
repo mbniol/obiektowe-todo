@@ -1,1 +1,2 @@
-"hello world" 
+wszystkie moduly sa w
+` pip install -r requirements.txt `
