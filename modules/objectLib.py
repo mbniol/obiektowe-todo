@@ -1,4 +1,5 @@
 from classes.Task import Task, Base
+from classes.EditType import EditType
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
@@ -18,7 +19,7 @@ def dbSelfHost():
     session = Session()
     return session
 
-def createTask(title, description, session):
+def createTask(title, description, priority, session):
     """Tworzy nowego taska i zwraca jego ID
     
     Parametry:
@@ -26,7 +27,7 @@ def createTask(title, description, session):
     -opis
     -sesja DB
     """
-    new_task = Task(title,description)
+    new_task = Task(title,description,priority)
     session.add(new_task)
     session.commit()
     return new_task.id
@@ -64,6 +65,19 @@ def getTask(id,session):
         return task.getInfo()
     else:
         return -1
+    
+def editTask(id,field,change_to,session):
+    task = session.get(Task, id)
+    if task:
+        match field:
+            case EditType.TITLE:
+                task.setTitle(change_to)
+            case EditType.DESC:
+                task.setDescription(change_to)
+            case EditType.PRIOR:
+                task.setPriority(change_to)
+            case EditType.COMPL:
+                task.setComplete(change_to)
     
 def getAll(session):
     """Zwraca listę wszystkich zadań w formie listy słowników.

@@ -4,6 +4,7 @@ wszystkie moduly sa w
 
 ### TODO
 - docstring
+- obsługa błędów generowanych przez klasę Task w objectLib.py
 - web host
 - web backend
 - web frontend

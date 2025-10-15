@@ -1,10 +1,12 @@
 import modules.objectLib as ol
+from classes.Priority import Priority
+from classes.EditType import EditType
+from web.webHost import app
+import asyncio
+
+
+async def runApp():
+    app.run()
     
 if __name__ == "__main__":
-    db=ol.dbSelfHost()
-
-    id = ol.createTask("test","test",db)
-    
-    result = ol.getAll(db)
-    for row in result:
-        print(row)
+    asyncio.run(runApp())
