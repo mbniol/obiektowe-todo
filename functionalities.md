@@ -35,4 +35,11 @@ Po każdej zmianie w liście zadań (dodanie, edycja, usunięcie) dane są autom
 
 # 9. Wczytywanie danych przy uruchomieniu
 
+
 Po uruchomieniu aplikacji dane o zadaniach są wczytywane z bazy danych, tak aby użytkownik mógł kontynuować pracę z poprzedniego stanu.
+
+
+# 10. Mock
+
+
+Wypełanianie bazy losowymi danymi
