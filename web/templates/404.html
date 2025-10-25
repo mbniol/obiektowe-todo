@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='/styles/404.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='/styles/common.css') }}">
+    <link rel="preload" href="{{ url_for('static', filename='/fonts/PlusJakartaSans.ttf') }}" as="font" type="font/ttf" crossorigin>
+    <title>404</title>
+</head>
+<body>
+    <div class="main">
+        <div class="image_container">
+            <img src="{{ url_for('static', filename='/img/404.webp') }}" height="100%">
+        </div>
+        <div class="text_container">
+            <h1>404</h1>
+            <span>not found :c</span>
+        </div>
+    </div>
+</body>
+</html>
