@@ -53,6 +53,6 @@ class Task(Base):
             raise Exception("Nieprawidłowy typ danych - oczekiwano: string")
         if description == "":
             raise Exception("Pole nie może być puste")
-        if len(description)>300:
+        if len(description)>1000:
             raise Exception("Tekst zbyt długi")
         self.__description = description

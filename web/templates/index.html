@@ -4,10 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='/styles/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='/styles/common.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='/styles/index.css') }}">
 </head>
 <body>
-    testuje kurwa
-    <div>{{ getall }}</div>
+    <div class="root">
+       <div class="title">Bieżące zadania</div>
+       <div class="utilities">
+        <a href="/add">Dodaj zadanie</a>
+        <a href="/clear">Wyczyść wszystkie</a>
+        <a href="/mock">Mock</a>
+       </div>
+       <div class="tasks">
+        {% for task in getall %}
+        <div class="task">
+            <div class="task-complete">
+                <a href="{% if task.complete%}/setcomp0?id={{task.id}}{% else %}/setcomp1?id={{task.id}}{% endif %}"><div class="btn-complete" completed="{% if task.complete%}true{% else %}false{% endif %}">{% if task.complete %}&check;{% endif %}</div></a>
+            </div>
+            <a href="/task?id={{task.id}}" class="task-text">
+                <div class="task-text">
+                    <div class="task-title">{{task.title}}</div>
+                    <div class="task-desc">{{task.description}}</div>
+                </div>
+            </a>
+            <div class="task-actions">
+                <a href="/edit?id={{task.id}}"><div class="btn"><span>&#10000;</span></div></a>
+                <a href="/del?id={{task.id}}"><div class="btn-delete"><span>&#10005;</span></div></a>
+        </div>
+       </div>
+       {% endfor %}
+    </div>
 </body>
 </html>
