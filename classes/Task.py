@@ -29,30 +29,30 @@ class Task(Base):
 
     def setComplete(self, is_complete):
         if not isinstance(is_complete, bool):
-            raise TypeError("Nieprawidłowy typ danych - oczekiwano: bool")
+            raise Exception("Nieprawidłowy typ danych - oczekiwano: bool")
         self.__complete = is_complete
 
     def setPriority(self, priority):
         if not isinstance(priority, int):
-            raise TypeError("Nieprawidłowy typ danych - oczekiwano: int")
+            raise Exception("Nieprawidłowy typ danych - oczekiwano: int")
         if priority>3 or priority<1:
-            raise ValueError("Wartość poza oczekiwanym zakresem")
+            raise Exception("Wartość poza oczekiwanym zakresem")
         self.__priority = priority
 
     def setTitle(self, title):
         if not isinstance(title, str):
-            raise TypeError("Nieprawidłowy typ danych - oczekiwano: string")
+            raise Exception("Nieprawidłowy typ danych - oczekiwano: string")
         if title == "":
-            raise ValueError("Pole nie może być puste")
+            raise Exception("Pole nie może być puste")
         if len(title)>100:
-            raise ValueError("Tekst zbyt długi")
+            raise Exception("Tekst zbyt długi")
         self.__title = title
 
     def setDescription(self, description):
         if not isinstance(description, str):
-            raise TypeError("Nieprawidłowy typ danych - oczekiwano: string")
+            raise Exception("Nieprawidłowy typ danych - oczekiwano: string")
         if description == "":
-            raise ValueError("Pole nie może być puste")
+            raise Exception("Pole nie może być puste")
         if len(description)>300:
-            raise ValueError("Tekst zbyt długi")
+            raise Exception("Tekst zbyt długi")
         self.__description = description

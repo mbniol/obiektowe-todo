@@ -29,9 +29,12 @@ def createTask(title, description, priority, session):
     -opis
     -sesja DB
     """
-    new_task = Task(title,description,priority)
-    session.add(new_task)
-    session.commit()
+    try:
+        new_task = Task(title,description,priority)
+        session.add(new_task)
+        session.commit()
+    except Exception as e:
+        return e
     return new_task.id
 
 def deleteTask(id,session):
@@ -45,6 +48,9 @@ def deleteTask(id,session):
     if task:
         session.delete(task)
         session.commit()
+        return 0
+    else:
+        return 1
 
 def clearTasks(session):
     """Usuwa wyszstkie taski
@@ -73,13 +79,29 @@ def editTask(id,field,change_to,session):
     if task:
         match field:
             case EditType.TITLE:
-                task.setTitle(change_to)
+                try:
+                    task.setTitle(change_to)
+                except Exception as e:
+                    return e
+                return 0
             case EditType.DESC:
-                task.setDescription(change_to)
+                try:
+                    task.setDescription(change_to)
+                except Exception as e:
+                    return e
+                return 0
             case EditType.PRIOR:
-                task.setPriority(change_to)
+                try:
+                    task.setPriority(change_to)
+                except Exception as e:
+                    return e
+                return 0
             case EditType.COMPL:
-                task.setComplete(change_to)
+                try:
+                    task.setComplete(change_to)
+                except Exception as e:
+                    return e
+                return 0
     
 def getAll(session):
     """Zwraca listę wszystkich zadań w formie listy słowników.
@@ -91,8 +113,8 @@ def getAll(session):
     return [task.getInfo() for task in tasks]
 
 def mock(number, session):
-    titles = ["pomocy uwiezili mnie w tasku", "losowy tytul", "lorem ipsum"]
-    descriptions = ["test", "i wtedy ten sloik pekł", "dzien dobry"]
+    titles = ["pomocy uwiezili mnie w tasku", "losowy tytul", "lorem ipsum", "radia posłuchać", "pojeść","smacznej kawusi"]
+    descriptions = ["test", "i wtedy ten sloik pekł", "dzien dobry", "3 dnia zastali pusty grub", "Pyszny i łatwy do przygotowania bigos z kiszonej kapusty z mięsem wieprzowym, kiełbasą, suszonymi grzybami. Zobacz także: bigos z kapusty białej i kiszonej"]
     for i in range(number):
         tit = random.choice(titles)
         desc = random.choice(descriptions)
