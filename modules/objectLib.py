@@ -1,5 +1,7 @@
 from classes.Task import Task, Base
 from classes.EditType import EditType
+from classes.Priority import Priority
+import random
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
@@ -87,3 +89,12 @@ def getAll(session):
     """
     tasks = session.query(Task).all()
     return [task.getInfo() for task in tasks]
+
+def mock(number, session):
+    titles = ["pomocy uwiezili mnie w tasku", "losowy tytul", "lorem ipsum"]
+    descriptions = ["test", "i wtedy ten sloik pekł", "dzien dobry"]
+    for i in range(number):
+        tit = random.choice(titles)
+        desc = random.choice(descriptions)
+        prio = random.randint(1,3)
+        createTask(tit, desc, prio, session)
