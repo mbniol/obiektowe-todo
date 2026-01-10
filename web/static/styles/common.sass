@@ -1,3 +1,8 @@
+$bg-color: #1B1B1B
+$text: #EFF1F3
+$primary: #009FB7
+$secondary: #FED766
+    
 *
     box-sizing: border-box
     margin: 0
@@ -8,11 +13,16 @@ body, html
     width: 100%
     height: 100%
 
+::-webkit-scrollbar
+  width: 10px
+
+::-webkit-scrollbar-track
+  background: $bg-color
+
+::-webkit-scrollbar-thumb
+  background: $primary
+  border-radius: 1rem
+
 @font-face
     font-family: PlusJakartaSans
     src: url(http://127.0.0.1:5000/static/fonts/PlusJakartaSans.ttf)
-
-$bg-color: #1B1B1B
-$text: #EFF1F3
-$primary: #009FB7
-$secondary: #FED766

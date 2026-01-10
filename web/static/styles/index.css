@@ -10,6 +10,10 @@ body, html {
   height: 100%;
 }
 
+::-webkit-scrollbar {
+  width: 10px;
+}
+
 @font-face {
   font-family: PlusJakartaSans;
   src: url(http://127.0.0.1:5000/static/fonts/PlusJakartaSans.ttf);
@@ -76,6 +80,7 @@ a {
   gap: 1rem;
   display: flex;
   flex-direction: column;
+  overflow-y: auto;
 }
 
 .task {
