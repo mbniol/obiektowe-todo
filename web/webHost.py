@@ -5,7 +5,6 @@ from classes.EditType import EditType
 app = flask.Flask(__name__)
 db=ol.dbSelfHost()
 ol.clearTasks(db)
-ol.mock(10,db)
 
 @app.route("/")
 def index():
