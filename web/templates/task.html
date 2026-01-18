@@ -4,10 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='/styles/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='/styles/common.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='/styles/edit.css') }}">
 </head>
 <body>
-    testuje kurwa
-    <div>{{ taskinfo }}</div>
+    <div class="root">
+       <div class="title">Podgląd zadania</div>
+       <div class="utilities">
+        <a href="/add">Dodaj zadanie</a>
+        <a href="/edit?id={{taskinfo.id}}">Edytuj</a>
+        <a href="/">Wróć</a>
+       </div>
+       <div class="tasks">
+        <div class="task-details">
+            <div class="task-details-title-bar">
+                <div class="task-details-title-bar-complete">{% if taskinfo.complete %}&check;{% endif %}</div>
+                <div class="task-details-title-bar-text">{{taskinfo.title}}</div>
+                <div class="task-details-title-bar-priority">
+                    <span>Priorytet</span>
+                    <span>{{taskinfo.priority}}</span>
+                </div>
+            </div>
+            <div class="task-details-description">{{taskinfo.description}}</div>
+        </div>
+       </div>
+    </div>
 </body>
 </html>

@@ -4,7 +4,6 @@ from classes.EditType import EditType
 
 app = flask.Flask(__name__)
 db=ol.dbSelfHost()
-ol.clearTasks(db)
 
 @app.route("/")
 def index():
@@ -14,6 +13,11 @@ def index():
 def taskView():
     task_id = flask.request.args.get('id', type=int)
     return flask.render_template('task.html', taskinfo=ol.getTask(task_id,db))
+
+@app.route("/edit")
+def editTask():
+    task_id = flask.request.args.get('id', type=int)
+    return flask.render_template('edit.html', taskinfo=ol.getTask(task_id,db))
 
 @app.route("/clear")
 def clear():
