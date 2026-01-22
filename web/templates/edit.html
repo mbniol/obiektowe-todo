@@ -1,22 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='/styles/common.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='/styles/edit.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='/styles/form.css') }}">
 </head>
+
 <body>
     <div class="root">
-       <div class="title">Edytuj zadanie</div>
-       <div class="utilities">
-        <a href="/add">Dodaj zadanie</a>
-        <a href="{% if where_from=='task' %}/task?id={{taskinfo.id}}{% else %}/{% endif %}">Wróć</a>
-       </div>
-       <div class="tasks">
-
-       </div>
+        <div class="title">Edytuj zadanie</div>
+        <div class="utilities">
+            <a href="/del?id={{taskinfo.id}}">Usuń</a>
+            <a href="{% if where_from=='task' %}/task?id={{taskinfo.id}}{% else %}/{% endif %}">Wróć</a>
+        </div>
+        <div class="tasks">
+            <form method="POST">
+                {{ form.hidden_tag() }}
+                <div class="form-title">
+                    {{ form.title.label }}
+                    {{ form.title() }}
+                </div>
+                <div class="form-description">
+                    {{ form.description.label }}
+                    {{ form.description() }}
+                </div>
+                <div class="form-priority">
+                    {{ form.priority.label }}
+                    <div class="form-priority-radio">
+                        {% for subfield in form.priority %}
+                        <label class="form-priority-radio-clickable">
+                            {{ subfield() }}
+                            {{ subfield.label.text }}
+                        </label>
+                    {% endfor %}
+                    </div>
+                </div>
+                {{ form.submit() }}
+                <div class="error-message">
+                    {{ message }}
+                </div>
+            </form>
+        </div>
     </div>
 </body>
+
 </html>
