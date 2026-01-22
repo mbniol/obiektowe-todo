@@ -1,10 +1,9 @@
 import flask
 import modules.objectLib as ol
+from classes.EditType import EditType
 
 app = flask.Flask(__name__)
 db=ol.dbSelfHost()
-ol.clearTasks(db)
-ol.mock(10,db)
 
 @app.route("/")
 def index():
@@ -15,6 +14,49 @@ def taskView():
     task_id = flask.request.args.get('id', type=int)
     return flask.render_template('task.html', taskinfo=ol.getTask(task_id,db))
 
+@app.route("/edit")
+def editTask():
+    task_id = flask.request.args.get('id', type=int)
+    return flask.render_template('edit.html', taskinfo=ol.getTask(task_id,db), where_from = flask.request.args.get('from', type=str))
+
+@app.route("/clear")
+def clear():
+    ol.clearTasks(db)
+    return flask.redirect("/")
+
+@app.route("/mock")
+def mock():
+    ol.mock(10,db)
+    return flask.redirect("/")
+
+@app.route("/del")
+def delete():
+    task_id = flask.request.args.get('id', type=int)
+    ol.deleteTask(task_id,db)
+    return flask.redirect("/")
+
+@app.route("/setcomp0")
+def setcomp0():
+    task_id = flask.request.args.get('id', type=int)
+    where_from = flask.request.args.get('from', type=str)
+    ol.editTask(task_id, EditType.COMPL, False, db)
+
+    if where_from == 'task':
+        return flask.redirect("/task?id="+str(task_id))
+    else:
+        return flask.redirect("/")
+
+
+@app.route("/setcomp1")
+def setcomp1():
+    task_id = flask.request.args.get('id', type=int)
+    where_from = flask.request.args.get('from', type=str)
+    ol.editTask(task_id, EditType.COMPL, True, db)
+    
+    if where_from == 'task':
+        return flask.redirect("/task?id="+str(task_id))
+    else:
+        return flask.redirect("/")
 
 @app.errorhandler(404)
 def not_found(e):

@@ -7,7 +7,7 @@ Użytkownik ma możliwość dodania nowego zadania poprzez wprowadzenie tytułu 
 
 # 2. Wyświetlanie listy zadań
 
-Aplikacja wyświetla wszystkie zadania znajdujące się w systemie wraz z ich szczegółami (np. tytułem, statusem).
+Aplikacja wyświetla wszystkie zadania znajdujące się w systemie wraz z ich szczegółami (np. tytułem, statusem), zadania są posortowane według priorytetu.
 
 # 3. Oznaczanie zadania jako wykonane
 
@@ -21,25 +21,18 @@ Użytkownik może edytować istniejące zadanie, zmieniając np. jego nazwę, op
 
 Użytkownik może usunąć zadanie z listy. Po usunięciu zadanie nie jest już widoczne ani dostępne w systemie.
 
-# 6. Filtrowanie zadań
 
-Aplikacja umożliwia filtrowanie zadań według statusu (np. tylko „do zrobienia” lub tylko „wykonane”).
-
-# 7. Sortowanie zadań
-
-Użytkownik może posortować listę zadań według wybranych kryteriów (np. nazwa, priorytet).
-
-# 8. Zapisywanie danych
+# 6. Zapisywanie danych
 
 Po każdej zmianie w liście zadań (dodanie, edycja, usunięcie) dane są automatycznie zapisywane w bazie danych, aby nie zostały utracone po zamknięciu programu.
 
-# 9. Wczytywanie danych przy uruchomieniu
+# 7. Wczytywanie danych przy uruchomieniu
 
 
 Po uruchomieniu aplikacji dane o zadaniach są wczytywane z bazy danych, tak aby użytkownik mógł kontynuować pracę z poprzedniego stanu.
 
 
-# 10. Mock
+# 8. Mock
 
 
 Wypełanianie bazy losowymi danymi
