@@ -1,10 +1,16 @@
-wszystkie moduly sa w
+# 📝 Task Manager DB
+System do zarządzania zadaniami oparty na SQLAlchemy i SQLite.
 
+## 🚀 Funkcje
+* Wyświetlanie zadań według priorytetu
+* Tworzenie zadań z priorytetami.
+* Edycja dowolnych pól (tytuł, opis, priorytet, status).
+* Mockowanie danych – szybkie generowanie testowych zadań.
+
+## 🛠️ Technologia
+* Język: Python 3.10+
+* Baza danych: SQLite
+* ORM: SQLAlchemy
+
+## 📦 Instalacja
 ` pip install -r requirements.txt `
-
-### TODO
-- docstring 
-- obsługa błędów generowanych przez klasę Task w objectLib.py ✓
-- web host
-- web backend
-- web frontend

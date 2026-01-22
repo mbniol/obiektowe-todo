@@ -13,7 +13,7 @@ class Task(Base):
     __complete = Column("complete", Boolean, default=False)
     __priority= Column("priority", Integer, default=3)
 
-    def __init__(self, title, description, priority):
+    def __init__(self, title: str, description: str, priority: int):
         self.setTitle(title)
         self.setDescription(description)
         self.setPriority(priority)
@@ -27,19 +27,19 @@ class Task(Base):
             "priority": self.__priority
         }
 
-    def setComplete(self, is_complete):
+    def setComplete(self, is_complete: bool):
         if not isinstance(is_complete, bool):
             raise Exception("Nieprawidłowy typ danych - oczekiwano: bool")
         self.__complete = is_complete
 
-    def setPriority(self, priority):
+    def setPriority(self, priority: int):
         if not isinstance(priority, int):
             raise Exception("Nieprawidłowy typ danych - oczekiwano: int")
         if priority>3 or priority<1:
             raise Exception("Wartość poza oczekiwanym zakresem")
         self.__priority = priority
 
-    def setTitle(self, title):
+    def setTitle(self, title: str):
         if not isinstance(title, str):
             raise Exception("Nieprawidłowy typ danych - oczekiwano: string")
         if title == "":
@@ -48,7 +48,7 @@ class Task(Base):
             raise Exception("Tekst zbyt długi")
         self.__title = title
 
-    def setDescription(self, description):
+    def setDescription(self, description: str):
         if not isinstance(description, str):
             raise Exception("Nieprawidłowy typ danych - oczekiwano: string")
         if description == "":

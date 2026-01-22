@@ -8,8 +8,6 @@ from sqlalchemy.orm import sessionmaker
 
 """
 Zawiera zestaw funkcji do obsługi tasków
-
-do dokonczenia :c
 """
 
 
@@ -21,12 +19,13 @@ def dbSelfHost():
     session = Session()
     return session
 
-def createTask(title, description, priority, session):
+def createTask(title: str, description: str, priority: int, session):
     """Tworzy nowego taska i zwraca jego ID
     
     Parametry:
     -tytul
     -opis
+    -priorytet
     -sesja DB
     """
     try:
@@ -37,7 +36,7 @@ def createTask(title, description, priority, session):
         return e
     return new_task.id
 
-def deleteTask(id,session):
+def deleteTask(id: int,session):
     """Usuwa taska z danym ID
     
     Parametry:
@@ -61,7 +60,7 @@ def clearTasks(session):
     session.query(Task).delete()
     session.commit()
 
-def getTask(id,session):
+def getTask(id: int,session):
     """Pobiera i zwraca dane dla taska z podanym ID, jezeli ten task nie istnieje zwraca -1
     
     Parametry:
@@ -73,8 +72,16 @@ def getTask(id,session):
         return task.getInfo()
     else:
         return -1
-    
-def editTask(id,field,change_to,session):
+
+def editTask(id: int,field: EditType,change_to: str | int | bool,session):
+    """Edytuje pole danego taska
+
+    Parametry:
+    -ID
+    -pole do edycji
+    -nowa wartość
+    -sesja DB
+    """
     task = session.get(Task, id)
     if task:
         match field:
@@ -112,7 +119,13 @@ def getAll(session):
     tasks = session.query(Task).order_by("complete", "priority", "title").all()
     return [task.getInfo() for task in tasks]
 
-def mock(number, session):
+def mock(number: int, session):
+    """Tworzy podaną liczbę losowych zadań w bazie danych.
+
+    Parametry:
+    -liczba zadań do utworzenia
+    -sesja DB
+    """
     titles = ["pomocy uwiezili mnie w tasku", "losowy tytul", "lorem ipsum", "radia posłuchać", "pojeść","smacznej kawusi","we are charlie kirk"]
     descriptions = ["test", "i wtedy ten sloik pekł", "dzien dobry", "3 dnia zastali pusty grub", "Pyszna tarta z gruszką i serem gorgonzola to idealne połączenie słodyczy z wyrazistym smakiem. Przygotowanie zacznij od wyłożenia formy do pieczenia gotowym ciastem francuskim, które należy nakłuć widelcem i podpiec przez kilka minut w piekarniku nagrzanym do dwustu stopni. W tym czasie przygotuj nadzienie, krojąc dojrzałe gruszki w cienkie plasterki oraz krusząc w dłoniach ser z niebieską pleśnią. Na podpieczony spód wyłóż warstwę serka mascarpone wymieszanego z odrobiną miodu i świeżym rozmarynem. Następnie ułóż promieniście plastry owoców, a wolne przestrzenie wypełnij kawałkami gorgonzoli oraz garścią posiekanych orzechów włoskich, które dodadzą całości przyjemnej chrupkości. Całość wstaw ponownie do pieca na około piętnaście minut, aż brzegi ciasta staną się złociste, a ser apetycznie się rozpuści. Po wyjęciu z piekarnika tartę warto skropić gęstym octem balsamicznym lub dodatkową strużką miodu dla przełamania smaków."]
     for i in range(number):
