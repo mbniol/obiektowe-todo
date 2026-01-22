@@ -115,6 +115,7 @@ a {
   display: flex;
   flex-direction: column;
   height: 5rem;
+  min-width: 0;
 }
 .task-text .task-text {
   padding: 0.5rem 0;

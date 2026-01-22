@@ -12,7 +12,7 @@
        <div class="title">Edytuj zadanie</div>
        <div class="utilities">
         <a href="/add">Dodaj zadanie</a>
-        <a href="/">Wróć</a>
+        <a href="{% if where_from=='task' %}/task?id={{taskinfo.id}}{% else %}/{% endif %}">Wróć</a>
        </div>
        <div class="tasks">
 

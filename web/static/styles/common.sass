@@ -82,3 +82,34 @@ a
 @font-face
     font-family: PlusJakartaSans
     src: url(http://127.0.0.1:5000/static/fonts/PlusJakartaSans.ttf)
+
+
+.btn-complete[completed=true]
+    width: 4rem
+    height: 4rem
+    border-radius: 0.5rem
+    background-color: #62C370
+    border: 0.125rem #62C370 solid
+    display: flex
+    justify-content: center
+    transition: all 0.2s ease-in-out
+    align-items: center
+
+.btn-complete[completed=true]:hover
+    background-color: $bg-color
+
+
+.btn-complete[completed=false]
+    width: 4rem
+    height: 4rem
+    border-radius: 0.5rem
+    background-color: $bg-color
+    display: flex
+    justify-content: center
+    align-items: center
+    transition: all 0.2s ease-in-out
+    border: 0.125rem $bg-color solid
+
+.btn-complete[completed=false]:hover
+    background-color: $bg-color
+    border: 0.125rem #62C370 solid

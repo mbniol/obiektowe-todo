@@ -17,7 +17,7 @@ def taskView():
 @app.route("/edit")
 def editTask():
     task_id = flask.request.args.get('id', type=int)
-    return flask.render_template('edit.html', taskinfo=ol.getTask(task_id,db))
+    return flask.render_template('edit.html', taskinfo=ol.getTask(task_id,db), where_from = flask.request.args.get('from', type=str))
 
 @app.route("/clear")
 def clear():
@@ -38,14 +38,25 @@ def delete():
 @app.route("/setcomp0")
 def setcomp0():
     task_id = flask.request.args.get('id', type=int)
+    where_from = flask.request.args.get('from', type=str)
     ol.editTask(task_id, EditType.COMPL, False, db)
-    return flask.redirect("/")
+
+    if where_from == 'task':
+        return flask.redirect("/task?id="+str(task_id))
+    else:
+        return flask.redirect("/")
+
 
 @app.route("/setcomp1")
 def setcomp1():
     task_id = flask.request.args.get('id', type=int)
+    where_from = flask.request.args.get('from', type=str)
     ol.editTask(task_id, EditType.COMPL, True, db)
-    return flask.redirect("/")
+    
+    if where_from == 'task':
+        return flask.redirect("/task?id="+str(task_id))
+    else:
+        return flask.redirect("/")
 
 @app.errorhandler(404)
 def not_found(e):

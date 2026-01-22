@@ -5,20 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='/styles/common.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='/styles/edit.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='/styles/task.css') }}">
 </head>
 <body>
     <div class="root">
        <div class="title">Podgląd zadania</div>
        <div class="utilities">
         <a href="/add">Dodaj zadanie</a>
-        <a href="/edit?id={{taskinfo.id}}">Edytuj</a>
+        <a href="/edit?id={{taskinfo.id}}&from=task">Edytuj</a>
+        <a href="/del?id={{taskinfo.id}}">Usuń</a>
         <a href="/">Wróć</a>
        </div>
        <div class="tasks">
         <div class="task-details">
             <div class="task-details-title-bar">
-                <div class="task-details-title-bar-complete">{% if taskinfo.complete %}&check;{% endif %}</div>
+                <div class="task-details-title-bar-complete">
+                    <a href="{% if taskinfo.complete%}/setcomp0?id={{taskinfo.id}}&from=task{% else %}/setcomp1?id={{taskinfo.id}}&from=task{% endif %}"><div class="btn-complete" completed="{% if taskinfo.complete%}true{% else %}false{% endif %}">{% if taskinfo.complete %}&check;{% endif %}</div></a>
+                </div>
                 <div class="task-details-title-bar-text">{{taskinfo.title}}</div>
                 <div class="task-details-title-bar-priority">
                     <span>Priorytet</span>
