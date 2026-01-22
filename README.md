@@ -1,4 +1,4 @@
-# 📝 Task Manager DB
+# 📝 Task Manager
 
 System do zarządzania zadaniami oparty na SQLAlchemy i SQLite.
 
@@ -15,6 +15,13 @@ System do zarządzania zadaniami oparty na SQLAlchemy i SQLite.
 - Baza danych: SQLite
 - ORM: SQLAlchemy
 
-## 📦 Instalacja
+## 📦 Instalacja i użycie
 
-`pip install -r requirements.txt`
+- Sklonuj repozytorium na swój komputer
+- Zainstaluj zależności: `pip install -r requirements.txt`
+- Uruchom plik index: `python index.py`
+
+## 🥵 Dodatkowe funkcjonalności
+
+- Uruchom testy jednostkowe: `python test.py`
+- Uruchom prosty prototyp tekstowy: `python txttest.py`
