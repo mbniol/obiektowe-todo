@@ -17,13 +17,13 @@ csrf = CSRFProtect(app)
 class AddForm(FlaskForm):
     title = StringField('Tytuł:')
     description = TextAreaField('Opis:')
-    priority = RadioField('Priorytet:',validators=[InputRequired(message=None)],choices=[(1,"Wysoki"),(2,"Średni"),(3,"Niski")])
+    priority = RadioField('Priorytet:',choices=[(1,"Wysoki"),(2,"Średni"),(3,"Niski")],default=3)
     submit = SubmitField('Dodaj')
 
 class EditForm(FlaskForm):
     title = StringField('Tytuł:')
     description = TextAreaField('Opis:')
-    priority = RadioField('Priorytet:', validators=[InputRequired()],choices=[(1,"Wysoki"),(2,"Średni"),(3,"Niski")],coerce=int)
+    priority = RadioField('Priorytet:', choices=[(1,"Wysoki"),(2,"Średni"),(3,"Niski")],coerce=int)
     submit = SubmitField('Zapisz zmiany')
 
 @app.route("/")
