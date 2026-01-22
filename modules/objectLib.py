@@ -113,7 +113,7 @@ def getAll(session):
     return [task.getInfo() for task in tasks]
 
 def mock(number, session):
-    titles = ["pomocy uwiezili mnie w tasku", "losowy tytul", "lorem ipsum", "radia posłuchać", "pojeść","smacznej kawusi","we are charlie kirk", "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"]
+    titles = ["pomocy uwiezili mnie w tasku", "losowy tytul", "lorem ipsum", "radia posłuchać", "pojeść","smacznej kawusi","we are charlie kirk"]
     descriptions = ["test", "i wtedy ten sloik pekł", "dzien dobry", "3 dnia zastali pusty grub", "Pyszna tarta z gruszką i serem gorgonzola to idealne połączenie słodyczy z wyrazistym smakiem. Przygotowanie zacznij od wyłożenia formy do pieczenia gotowym ciastem francuskim, które należy nakłuć widelcem i podpiec przez kilka minut w piekarniku nagrzanym do dwustu stopni. W tym czasie przygotuj nadzienie, krojąc dojrzałe gruszki w cienkie plasterki oraz krusząc w dłoniach ser z niebieską pleśnią. Na podpieczony spód wyłóż warstwę serka mascarpone wymieszanego z odrobiną miodu i świeżym rozmarynem. Następnie ułóż promieniście plastry owoców, a wolne przestrzenie wypełnij kawałkami gorgonzoli oraz garścią posiekanych orzechów włoskich, które dodadzą całości przyjemnej chrupkości. Całość wstaw ponownie do pieca na około piętnaście minut, aż brzegi ciasta staną się złociste, a ser apetycznie się rozpuści. Po wyjęciu z piekarnika tartę warto skropić gęstym octem balsamicznym lub dodatkową strużką miodu dla przełamania smaków."]
     for i in range(number):
         tit = random.choice(titles)
