@@ -11,7 +11,6 @@
     <div class="root">
        <div class="title">Podgląd zadania</div>
        <div class="utilities">
-        <a href="/add">Dodaj zadanie</a>
         <a href="/edit?id={{taskinfo.id}}&from=task">Edytuj</a>
         <a href="/del?id={{taskinfo.id}}">Usuń</a>
         <a href="/">Wróć</a>
@@ -25,7 +24,7 @@
                 <div class="task-details-title-bar-text">{{taskinfo.title}}</div>
                 <div class="task-details-title-bar-priority">
                     <span>Priorytet</span>
-                    <span>{{taskinfo.priority}}</span>
+                    <span>{% if taskinfo.priority==1 %}Wysoki{% elif taskinfo.priority==2 %}Średni{% elif taskinfo.priority==3 %}Niski{% else %}{% endif %}</span>
                 </div>
             </div>
             <div class="task-details-description">{{taskinfo.description}}</div>

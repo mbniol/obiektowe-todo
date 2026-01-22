@@ -1,13 +1,41 @@
 import flask
 import modules.objectLib as ol
 from classes.EditType import EditType
+import secrets
+from flask_wtf import FlaskForm, CSRFProtect
+from wtforms import StringField, SubmitField, RadioField, TextAreaField
+from wtforms.validators import DataRequired, Length, InputRequired
 
 app = flask.Flask(__name__)
 db=ol.dbSelfHost()
 
+foo = secrets.token_urlsafe(16)
+app.secret_key = foo
+
+csrf = CSRFProtect(app)
+
+class AddForm(FlaskForm):
+    title = StringField('Tytuł:')
+    description = TextAreaField('Opis:')
+    priority = RadioField('Priorytet:',choices=[(1,"Wysoki"),(2,"Średni"),(3,"Niski")],default=3)
+    submit = SubmitField('Dodaj')
+
+
 @app.route("/")
 def index():
     return flask.render_template('index.html', getall=ol.getAll(db))
+
+@app.route('/add',methods=['GET', 'POST'])
+def addTask():
+    form = AddForm()
+    message = ""
+    if form.validate_on_submit():
+        response = ol.createTask(form.title.data,form.description.data,int(form.priority.data),db)
+        if isinstance(response, int):
+            return flask.redirect("/")
+        else:
+            message = response
+    return flask.render_template('add.html', form=form, message=message)
 
 @app.route("/task")
 def taskView():
