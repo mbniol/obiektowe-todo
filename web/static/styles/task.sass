@@ -1,0 +1,43 @@
+@use 'common'
+
+.task-details-title-bar
+    display: flex
+    flex-direction: row
+    background-color: common.$primary
+    height: 6rem
+    padding: 0.5rem 1rem
+    border-radius: 1rem
+    gap: 0.5rem
+
+.task-details-title-bar
+    div
+        height: 5rem
+        display: flex
+
+
+.task-details-title-bar-complete
+    width: 4rem
+    justify-content: center
+    align-items: center
+
+.task-details-title-bar-text
+    flex-grow: 1
+    font-size: 2rem
+    justify-content: flex-start
+    min-width: 0
+    overflow: hidden
+    -webkit-mask-image: linear-gradient(to right, black 95%, transparent 100%)
+    mask-image: linear-gradient(to right, black 95%, transparent 100%)
+    align-items: center
+
+.task-details-title-bar-priority
+    font-size: 1.5rem
+    display: flex
+    justify-content: center
+    flex-direction: column
+    align-items: flex-end
+
+.task-details-description
+    font-size: 1.5rem
+    padding: 0.5rem 1rem
+    text-align: justify
