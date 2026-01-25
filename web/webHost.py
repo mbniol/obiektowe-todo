@@ -4,7 +4,6 @@ from classes.EditType import EditType
 import secrets
 from flask_wtf import FlaskForm, CSRFProtect
 from wtforms import StringField, SubmitField, RadioField, TextAreaField
-from wtforms.validators import DataRequired, Length, InputRequired
 
 app = flask.Flask(__name__)
 db=ol.dbSelfHost()
